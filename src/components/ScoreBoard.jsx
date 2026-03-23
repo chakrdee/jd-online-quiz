@@ -1,6 +1,6 @@
 export default function ScoreBoard({ score, difficulty }) {
   const stars = '⭐'.repeat(Math.min(difficulty, 5));
-  
+
   return (
     <div style={{
       display: 'flex',

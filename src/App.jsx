@@ -25,7 +25,7 @@ export default function App() {
       state.difficulty,
       QUESTION_TIMER
     );
-    
+
     dispatch({
       type: ACTIONS.ANSWER_QUESTION,
       answer: { isCorrect, selectedAnswer },
@@ -38,12 +38,12 @@ export default function App() {
       state.difficulty,
       state.consecutiveCorrect
     );
-    
+
     const nextQuestion = QuizEngine.getNextQuestion(
       [...state.usedQuestionIds, state.currentQuestion.id],
       newDifficulty
     );
-    
+
     dispatch({
       type: ACTIONS.NEXT_QUESTION,
       question: nextQuestion,

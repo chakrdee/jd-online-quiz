@@ -2,7 +2,7 @@ import { getScoreMessage } from '../../utils/scoring.js';
 
 export default function ResultsView({ score, totalQuestions, onRestart }) {
   const { emoji, text } = getScoreMessage(score, totalQuestions);
-  
+
   return (
     <div className="card" style={{textAlign: 'center'}}>
       <div style={{fontSize: '80px', marginBottom: '20px'}}>{emoji}</div>

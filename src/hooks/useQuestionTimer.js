@@ -9,7 +9,7 @@ export const useQuestionTimer = (duration, isActive, onTimeout) => {
 
   useEffect(() => {
     if (!isActive) return;
-    
+
     const interval = setInterval(() => {
       setTimeRemaining(prev => {
         if (prev <= 100) {

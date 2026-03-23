@@ -1,6 +1,6 @@
 export default function ProgressBar({ current, total }) {
   const percentage = (current / total) * 100;
-  
+
   return (
     <div style={{marginBottom: '20px'}}>
       <div style={{
