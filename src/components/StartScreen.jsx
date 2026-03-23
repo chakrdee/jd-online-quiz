@@ -13,17 +13,17 @@ export default function StartScreen({ onStart }) {
         fontSize: 'clamp(32px, 10vw, 48px)',
         color: 'white',
         fontWeight: 'bold'
-      }}>C</div>
+      }}>🎯</div>
       <h1 style={{
         fontSize: 'clamp(28px, 8vw, 42px)',
         fontWeight: '700',
         color: '#1a202c',
         marginBottom: '12px'
       }}>
-        Cell Biology Quiz
+        JD Quiz
       </h1>
       <p style={{fontSize: 'clamp(15px, 4vw, 18px)', color: '#4a5568', marginBottom: 'clamp(24px, 6vw, 40px)', lineHeight: '1.6', padding: '0 8px'}}>
-        Test your knowledge about plant and animal cells. Answer correctly and quickly to earn more points. The quiz adapts to your skill level!
+        Test your knowledge and challenge yourself. Answer correctly and quickly to earn more points. The quiz adapts to your skill level!
       </p>
       <button
         onClick={onStart}

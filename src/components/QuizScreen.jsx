@@ -20,10 +20,21 @@ export default function QuizScreen({
 }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
+  // Reset selectedAnswer when question changes
   useEffect(() => {
     setSelectedAnswer(null);
   }, [question.id]);
-  const { percentage } = useQuestionTimer(
+
+  // Auto-advance on correct answer after showing brief feedback
+  useEffect(() => {
+    if (showingFeedback && lastAnswer?.isCorrect) {
+      const timer = setTimeout(() => {
+        onNext();
+      }, 1000); // 1 second delay to show correct answer highlighted
+      return () => clearTimeout(timer);
+    }
+  }, [showingFeedback, lastAnswer, onNext]);
+  const { percentage, timeRemaining } = useQuestionTimer(
     QUESTION_TIMER,
     !showingFeedback,
     onTimeout
@@ -93,7 +104,7 @@ export default function QuizScreen({
           );
         })}
       </div>
-      {showingFeedback && lastAnswer && (
+      {showingFeedback && lastAnswer && !lastAnswer.isCorrect && (
         <FeedbackCard
           isCorrect={lastAnswer.isCorrect}
           correctAnswer={question.answer}

@@ -15,9 +15,9 @@ export class QuizEngine {
     return question ? shuffleOptions(question) : null;
   }
 
-  static checkAnswer(selectedAnswer, correctAnswer, difficulty, timeRemaining) {
+  static checkAnswer(selectedAnswer, correctAnswer) {
     const isCorrect = selectedAnswer === correctAnswer;
-    const points = isCorrect ? calculateScore(difficulty, timeRemaining, QUESTION_TIMER) : 0;
+    const points = calculateScore(isCorrect);
     return { isCorrect, points };
   }
 

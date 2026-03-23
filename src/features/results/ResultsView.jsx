@@ -2,7 +2,7 @@ import { getScoreMessage } from '../../utils/scoring.js';
 
 export default function ResultsView({ score, totalQuestions, onRestart }) {
   const { emoji, text } = getScoreMessage(score, totalQuestions);
-  const percentage = Math.round((score / (totalQuestions * 30)) * 100);
+  const percentage = Math.round((score / totalQuestions) * 100);
 
   return (
     <div className="card" style={{textAlign: 'center'}}>
@@ -15,7 +15,7 @@ export default function ResultsView({ score, totalQuestions, onRestart }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: 'clamp(36px, 10vw, 56px)',
+        fontSize: 'clamp(28px, 7vw, 40px)',
         color: 'white',
         fontWeight: 'bold',
         boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
@@ -31,8 +31,8 @@ export default function ResultsView({ score, totalQuestions, onRestart }) {
         border: '2px solid #bfdbfe'
       }}>
         <div style={{fontSize: 'clamp(14px, 3.5vw, 16px)', fontWeight: '600', marginBottom: '8px', color: '#64748b'}}>Final Score</div>
-        <div style={{fontSize: 'clamp(36px, 10vw, 48px)', fontWeight: '700'}}>{score}</div>
-        <div style={{fontSize: 'clamp(12px, 3vw, 14px)', marginTop: '8px', color: '#64748b'}}>out of {totalQuestions * 50} possible points</div>
+        <div style={{fontSize: 'clamp(36px, 10vw, 48px)', fontWeight: '700'}}>{score} / {totalQuestions}</div>
+        <div style={{fontSize: 'clamp(12px, 3vw, 14px)', marginTop: '8px', color: '#64748b'}}>Correct Answers</div>
       </div>
       <button
         onClick={onRestart}

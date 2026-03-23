@@ -21,14 +21,13 @@ export default function App() {
   const handleAnswer = (selectedAnswer) => {
     const { isCorrect, points } = QuizEngine.checkAnswer(
       selectedAnswer,
-      state.currentQuestion.answer,
-      state.difficulty,
-      QUESTION_TIMER
+      state.currentQuestion.answer
     );
 
     dispatch({
       type: ACTIONS.ANSWER_QUESTION,
       answer: { isCorrect, selectedAnswer },
+      isCorrect,
       points
     });
   };
@@ -64,6 +63,7 @@ export default function App() {
       {state.screen === 'start' && <StartScreen onStart={handleStart} />}
       {state.screen === 'quiz' && (
         <QuizScreen
+          key={`${state.currentQuestion.id}-${state.questionIndex}`}
           question={state.currentQuestion}
           questionIndex={state.questionIndex}
           totalQuestions={state.totalQuestions}

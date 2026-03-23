@@ -1,16 +1,17 @@
-# Cell Quest - Interactive Kids Science Quiz
+# JD Quiz - Interactive Learning Platform
 
-An engaging, adaptive quiz application for kids to learn about cell biology. Built with React and Vite for optimal performance and deployed on Netlify.
+An engaging, adaptive quiz application for learning across multiple subjects and topics. Built with React and Vite for optimal performance and deployed on Netlify.
 
 ## Features
 
-✨ **Adaptive Difficulty** - Questions get harder as kids answer correctly
-⏱️ **Timed Questions** - 5-second timer per question (configurable)
+✨ **Adaptive Difficulty** - Questions get harder as you answer correctly
+⏱️ **Timed Questions** - 7-second timer per question with 2-second delay
 🎯 **Smart Scoring** - Points based on difficulty and speed
-🎨 **Kid-Friendly Design** - Colorful, engaging interface with animations
-📚 **Educational Feedback** - Explanations for wrong answers
+🎨 **Modern Design** - Clean, engaging interface with smooth animations
+📚 **Educational Feedback** - Explanations for incorrect answers
 🔀 **Randomized Options** - Answer positions shuffle to prevent patterns
 🏆 **Progress Tracking** - Visual progress and score indicators
+🔧 **Scalable Architecture** - Ready to expand to multiple subjects, grades, and topics
 
 ## Quick Start
 
