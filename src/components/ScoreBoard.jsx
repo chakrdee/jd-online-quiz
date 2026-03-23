@@ -1,23 +1,34 @@
 export default function ScoreBoard({ score, difficulty }) {
-  const stars = '⭐'.repeat(Math.min(difficulty, 5));
+  const difficultyLabels = ['Beginner', 'Easy', 'Medium', 'Hard', 'Expert'];
 
   return (
     <div style={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: '20px',
-      padding: '15px',
-      background: 'linear-gradient(135deg, #667eea22, #764ba222)',
-      borderRadius: '10px'
+      marginBottom: 'clamp(16px, 4vw, 24px)',
+      padding: 'clamp(16px, 4vw, 20px)',
+      background: 'linear-gradient(135deg, #f0f9ff, #e0f2fe)',
+      borderRadius: '12px',
+      border: '1px solid #bae6fd',
+      gap: '12px',
+      flexWrap: 'wrap'
     }}>
       <div>
-        <div style={{fontSize: '14px', color: '#666', marginBottom: '4px'}}>Score</div>
-        <div style={{fontSize: '24px', fontWeight: 'bold', color: '#667eea'}}>{score}</div>
+        <div style={{fontSize: 'clamp(11px, 2.8vw, 13px)', color: '#64748b', marginBottom: '6px', fontWeight: '600'}}>Score</div>
+        <div style={{fontSize: 'clamp(24px, 6vw, 28px)', fontWeight: '700', color: '#1e40af'}}>{score}</div>
       </div>
       <div style={{textAlign: 'right'}}>
-        <div style={{fontSize: '14px', color: '#666', marginBottom: '4px'}}>Difficulty</div>
-        <div style={{fontSize: '20px'}}>{stars}</div>
+        <div style={{fontSize: 'clamp(11px, 2.8vw, 13px)', color: '#64748b', marginBottom: '6px', fontWeight: '600'}}>Level</div>
+        <div style={{
+          fontSize: 'clamp(12px, 3vw, 14px)',
+          fontWeight: '600',
+          color: '#1e40af',
+          background: '#dbeafe',
+          padding: 'clamp(5px, 1.5vw, 6px) clamp(10px, 2.5vw, 12px)',
+          borderRadius: '6px',
+          whiteSpace: 'nowrap'
+        }}>{difficultyLabels[difficulty - 1]}</div>
       </div>
     </div>
   );

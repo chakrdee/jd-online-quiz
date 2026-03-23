@@ -5,60 +5,61 @@
 }
 
 body {
-  font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #333;
+  color: #1a202c;
 }
 
 #root {
   width: 100%;
-  max-width: 800px;
-  padding: 20px;
+  max-width: 900px;
+  padding: 24px;
 }
 
 button {
   font-family: inherit;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
-  border-radius: 12px;
-  padding: 14px 28px;
-  font-size: 18px;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
 }
 
 button:active {
   transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: not-allowed;
   transform: none;
 }
 
 .card {
   background: white;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  animation: slideIn 0.5s ease;
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -68,21 +69,101 @@ button:disabled {
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.02); }
 }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  75% { transform: translateX(10px); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
 }
 
 .correct {
   background: #10b981 !important;
-  animation: pulse 0.5s ease;
+  animation: pulse 0.4s ease;
 }
 
 .incorrect {
   background: #ef4444 !important;
-  animation: shake 0.5s ease;
+  animation: shake 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  #root {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  button {
+    padding: 14px 20px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  h1 {
+    font-size: 28px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  h3 {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #root {
+    max-width: 700px;
+    padding: 20px;
+  }
+
+  .card {
+    padding: 36px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    transform: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
 }

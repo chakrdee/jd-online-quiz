@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar.jsx';
 import TimerBar from './TimerBar.jsx';
 import ScoreBoard from './ScoreBoard.jsx';
@@ -19,6 +19,10 @@ export default function QuizScreen({
   lastAnswer
 }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  useEffect(() => {
+    setSelectedAnswer(null);
+  }, [question.id]);
   const { percentage } = useQuestionTimer(
     QUESTION_TIMER,
     !showingFeedback,
@@ -42,32 +46,39 @@ export default function QuizScreen({
       <ScoreBoard score={score} difficulty={difficulty} />
       {!showingFeedback && <TimerBar percentage={percentage} />}
       <h2 style={{
-        fontSize: '24px',
-        marginBottom: '30px',
-        color: '#333',
-        lineHeight: '1.4'
+        fontSize: 'clamp(18px, 4.5vw, 22px)',
+        fontWeight: '600',
+        marginBottom: 'clamp(24px, 6vw, 32px)',
+        color: '#1a202c',
+        lineHeight: '1.5'
       }}>
         {question.question}
       </h2>
       <div style={{
         display: 'grid',
-        gap: '15px'
+        gap: 'clamp(10px, 2.5vw, 12px)'
       }}>
         {question.options.map((option, idx) => {
           let buttonStyle = {
-            background: '#f3f4f6',
-            color: '#333',
+            background: '#ffffff',
+            color: '#2d3748',
             textAlign: 'left',
             width: '100%',
-            fontSize: '16px'
+            fontSize: 'clamp(14px, 3.5vw, 16px)',
+            border: '2px solid #e2e8f0',
+            fontWeight: '500',
+            minHeight: '52px',
+            padding: 'clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px)'
           };
 
           if (showingFeedback) {
             if (option === question.answer) {
-              buttonStyle = { ...buttonStyle, background: '#10b981', color: 'white' };
+              buttonStyle = { ...buttonStyle, background: '#10b981', color: 'white', border: '2px solid #059669' };
             } else if (option === selectedAnswer && !lastAnswer?.isCorrect) {
-              buttonStyle = { ...buttonStyle, background: '#ef4444', color: 'white' };
+              buttonStyle = { ...buttonStyle, background: '#ef4444', color: 'white', border: '2px solid #dc2626' };
             }
+          } else if (selectedAnswer === option) {
+            buttonStyle = { ...buttonStyle, background: '#f0f9ff', border: '2px solid #3b82f6' };
           }
 
           return (

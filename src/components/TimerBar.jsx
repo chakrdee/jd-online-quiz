@@ -7,11 +7,11 @@ export default function TimerBar({ percentage }) {
 
   return (
     <div style={{
-      height: '6px',
-      background: '#e5e7eb',
-      borderRadius: '3px',
+      height: '4px',
+      background: '#e2e8f0',
+      borderRadius: '2px',
       overflow: 'hidden',
-      marginBottom: '20px'
+      marginBottom: 'clamp(16px, 4vw, 24px)'
     }}>
       <div style={{
         height: '100%',

@@ -1,42 +1,35 @@
 export default function FeedbackCard({ isCorrect, correctAnswer, explanation, onNext }) {
   return (
     <div style={{
-      marginTop: '20px',
-      padding: '20px',
-      background: isCorrect ? '#d1fae5' : '#fee2e2',
+      marginTop: 'clamp(16px, 4vw, 24px)',
+      padding: 'clamp(16px, 4vw, 24px)',
+      background: isCorrect ? '#ecfdf5' : '#fef2f2',
       borderRadius: '12px',
-      border: `3px solid ${isCorrect ? '#10b981' : '#ef4444'}`
+      border: `2px solid ${isCorrect ? '#10b981' : '#ef4444'}`
     }}>
-      <div style={{
-        fontSize: '48px',
-        textAlign: 'center',
-        marginBottom: '15px'
-      }}>
-        {isCorrect ? '🎉' : '📚'}
-      </div>
       <h3 style={{
         color: isCorrect ? '#059669' : '#dc2626',
-        textAlign: 'center',
-        marginBottom: '15px',
-        fontSize: '24px'
+        marginBottom: 'clamp(12px, 3vw, 16px)',
+        fontSize: 'clamp(17px, 4vw, 20px)',
+        fontWeight: '600'
       }}>
-        {isCorrect ? 'Correct!' : 'Not quite!'}
+        {isCorrect ? '✓ Correct Answer' : '✗ Incorrect Answer'}
       </h3>
       {!isCorrect && (
         <p style={{
-          fontSize: '16px',
-          marginBottom: '10px',
-          color: '#333',
-          fontWeight: 'bold'
+          fontSize: 'clamp(14px, 3.5vw, 16px)',
+          marginBottom: 'clamp(10px, 2.5vw, 12px)',
+          color: '#1a202c',
+          fontWeight: '600'
         }}>
-          The correct answer is: {correctAnswer}
+          Correct answer: {correctAnswer}
         </p>
       )}
       <p style={{
-        fontSize: '16px',
-        lineHeight: '1.6',
-        color: '#333',
-        marginBottom: '20px'
+        fontSize: 'clamp(14px, 3.5vw, 15px)',
+        lineHeight: '1.7',
+        color: '#4a5568',
+        marginBottom: 'clamp(16px, 4vw, 20px)'
       }}>
         {explanation}
       </p>
@@ -44,12 +37,12 @@ export default function FeedbackCard({ isCorrect, correctAnswer, explanation, on
         onClick={onNext}
         style={{
           width: '100%',
-          background: isCorrect ? '#10b981' : '#ef4444',
+          background: isCorrect ? '#10b981' : '#3b82f6',
           color: 'white',
-          fontSize: '18px'
+          fontSize: '16px'
         }}
       >
-        Next Question ➡️
+        Continue
       </button>
     </div>
   );
