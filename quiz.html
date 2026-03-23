@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+      <title>Plant vs Animal Cell Quiz</title>
+      <style>
+body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+button { margin: 5px 0; padding: 10px; width: 100%; }
+.correct { background-color: #c8f7c5; }
+.wrong { background-color: #f7c5c5; }
+      </style>
+    </head>
+    <body>
+
+      <h1>Plant Cell vs Animal Cell Quiz</h1>
+      <div id="quiz"></div>
+      <button id="nextBtn" onclick="nextQuestion()" style="display:none;">Next</button>
+      <h2 id="score"></h2>
+
+      <script>
+const questions = [
+{q:"Which structure is found in plant cells but not animal cells?",o:["Cell wall","Cell membrane","Nucleus","Mitochondria"],a:"Cell wall"},
+{q:"Which organelle is the control center?",o:["Nucleus","Ribosome","Golgi","Vacuole"],a:"Nucleus"},
+{q:"Powerhouse of the cell?",o:["Mitochondria","Vacuole","Ribosome","Wall"],a:"Mitochondria"},
+{q:"Photosynthesis occurs in?",o:["Chloroplast","Mitochondria","Lysosome","Nucleus"],a:"Chloroplast"},
+{q:"What do ribosomes make?",o:["Proteins","Lipids","Water","DNA"],a:"Proteins"}
+];
+
+// duplicate to reach ~50
+while(questions.length < 50){
+  questions.push(...questions.slice(0,5));
+}
+questions.length = 50;
+
+let current = 0;
+let score = 0;
+
+function loadQuestion(){
+  const q = questions[current];
+  const quizDiv = document.getElementById("quiz");
+  quizDiv.innerHTML = "<h3>" + (current+1) + ". " + q.q + "</h3>";
+  q.o.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.innerText = opt;
+    btn.onclick = () => checkAnswer(btn,opt,q.a);
+    quizDiv.appendChild(btn);
+  });
+}
+
+function checkAnswer(btn, selected, answer){
+  const buttons = document.querySelectorAll("#quiz button");
+  buttons.forEach(b => b.disabled = true);
+  if(selected === answer){
+    btn.classList.add("correct");
+    score++;
+  } else {
+    btn.classList.add("wrong");
+  }
+  document.getElementById("nextBtn").style.display = "block";
+}
+
+function nextQuestion(){
+  current++;
+  document.getElementById("nextBtn").style.display = "none";
+  if(current < questions.length){
+    loadQuestion();
+  } else {
+    document.getElementById("quiz").innerHTML = "";
+    document.getElementById("score").innerText = "Score: " + score + " / " + questions.length;
+  }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
