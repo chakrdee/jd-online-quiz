@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar.jsx';
-import TimerBar from './TimerBar.jsx';
 import ScoreBoard from './ScoreBoard.jsx';
 import FeedbackCard from './FeedbackCard.jsx';
-import { useQuestionTimer } from '../hooks/useQuestionTimer.js';
-import { QUESTION_TIMER } from '../data/questions.js';
 
 export default function QuizScreen({
   question,
@@ -14,7 +11,6 @@ export default function QuizScreen({
   difficulty,
   onAnswer,
   onNext,
-  onTimeout,
   showingFeedback,
   lastAnswer
 }) {
@@ -34,11 +30,6 @@ export default function QuizScreen({
       return () => clearTimeout(timer);
     }
   }, [showingFeedback, lastAnswer, onNext]);
-  const { percentage, timeRemaining } = useQuestionTimer(
-    QUESTION_TIMER,
-    !showingFeedback,
-    onTimeout
-  );
 
   const handleAnswer = (answer) => {
     if (showingFeedback) return;
@@ -55,7 +46,6 @@ export default function QuizScreen({
     <div className="card">
       <ProgressBar current={questionIndex + 1} total={totalQuestions} />
       <ScoreBoard score={score} difficulty={difficulty} />
-      {!showingFeedback && <TimerBar percentage={percentage} />}
       <h2 style={{
         fontSize: 'clamp(18px, 4.5vw, 22px)',
         fontWeight: '600',

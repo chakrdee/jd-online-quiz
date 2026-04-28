@@ -4,16 +4,16 @@ import QuizScreen from './components/QuizScreen.jsx';
 import ResultsView from './features/results/ResultsView.jsx';
 import { quizReducer, initialState, ACTIONS } from './features/quiz/quizReducer.js';
 import { QuizEngine } from './features/quiz/quizEngine.js';
-import { QUESTION_TIMER } from './data/questions.js';
 
 export default function App() {
   const [state, dispatch] = useReducer(quizReducer, initialState);
 
-  const handleStart = () => {
-    const firstQuestion = QuizEngine.getFirstQuestion();
+  const handleStart = (questionSetId) => {
+    const firstQuestion = QuizEngine.getFirstQuestion(questionSetId);
     dispatch({
       type: ACTIONS.START_QUIZ,
       question: firstQuestion,
+      questionSetId: questionSetId,
       totalQuestions: 10
     });
   };
@@ -39,6 +39,7 @@ export default function App() {
     );
 
     const nextQuestion = QuizEngine.getNextQuestion(
+      state.questionSetId,
       [...state.usedQuestionIds, state.currentQuestion.id],
       newDifficulty
     );
@@ -48,10 +49,6 @@ export default function App() {
       question: nextQuestion,
       newDifficulty
     });
-  };
-
-  const handleTimeout = () => {
-    dispatch({ type: ACTIONS.TIMEOUT });
   };
 
   const handleRestart = () => {
@@ -71,7 +68,6 @@ export default function App() {
           difficulty={state.difficulty}
           onAnswer={handleAnswer}
           onNext={handleNext}
-          onTimeout={handleTimeout}
           showingFeedback={state.showingFeedback}
           lastAnswer={state.lastAnswer}
         />

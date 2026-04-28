@@ -2,13 +2,14 @@ export const ACTIONS = {
   START_QUIZ: 'START_QUIZ',
   ANSWER_QUESTION: 'ANSWER_QUESTION',
   NEXT_QUESTION: 'NEXT_QUESTION',
-  TIMEOUT: 'TIMEOUT',
+  // TIMEOUT: 'TIMEOUT', // Disabled - timer functionality removed
   RESTART: 'RESTART'
 };
 
 export const initialState = {
   screen: 'start',
   currentQuestion: null,
+  questionSetId: null,
   score: 0,
   questionIndex: 0,
   totalQuestions: 10,
@@ -26,6 +27,7 @@ export const quizReducer = (state, action) => {
         ...initialState,
         screen: 'quiz',
         currentQuestion: action.question,
+        questionSetId: action.questionSetId,
         totalQuestions: action.totalQuestions
       };
     case ACTIONS.ANSWER_QUESTION:
@@ -53,13 +55,13 @@ export const quizReducer = (state, action) => {
         lastAnswer: null,
         showingFeedback: false
       };
-    case ACTIONS.TIMEOUT:
-      return {
-        ...state,
-        lastAnswer: { isCorrect: false, selectedAnswer: null },
-        showingFeedback: true,
-        consecutiveCorrect: 0
-      };
+    // case ACTIONS.TIMEOUT:
+    //   return {
+    //     ...state,
+    //     lastAnswer: { isCorrect: false, selectedAnswer: null },
+    //     showingFeedback: true,
+    //     consecutiveCorrect: 0
+    //   };
     case ACTIONS.RESTART:
       return initialState;
     default:

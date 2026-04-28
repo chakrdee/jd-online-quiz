@@ -11,8 +11,8 @@ import { cellBiologyQuestions } from './cell-biology.js';
 import { ela2Questions } from './ela-2.js';
 import { DEFAULT_TOPIC } from '../config/subjects.js';
 
-// Timer configuration (in milliseconds)
-export const QUESTION_TIMER = 7000;
+// Timer configuration (in milliseconds) - Currently disabled
+// export const QUESTION_TIMER = 7000;
 
 // Question registry - add new question sets here
 export const questionSets = {

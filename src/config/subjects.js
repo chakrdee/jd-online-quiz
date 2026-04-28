@@ -35,7 +35,7 @@ export const SUBJECTS = {
     topics: {
       ELA_2: {
         id: 'ela-2',
-        name: 'ELA Grade 2',
+        name: 'GMAS ELA - 2 (5th Grade)',
         icon: '✍️',
         grade: 'elementary',
         questionSet: 'ela-2' // corresponds to question file

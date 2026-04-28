@@ -1,4 +1,4 @@
-// ELA-2 Questions - English Language Arts Grade 2
+// GMAS ELA-2 Questions - English Language Arts (5th Grade)
 // Covers grammar, punctuation, vocabulary, and writing conventions
 
 export const ela2Questions = [
