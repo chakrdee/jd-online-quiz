@@ -27,6 +27,22 @@ export const SUBJECTS = {
       // }
     }
   },
+  ELA: {
+    id: 'ela',
+    name: 'English Language Arts',
+    icon: '📝',
+    grades: ['elementary', 'middle', 'high'],
+    topics: {
+      ELA_2: {
+        id: 'ela-2',
+        name: 'ELA Grade 2',
+        icon: '✍️',
+        grade: 'elementary',
+        questionSet: 'ela-2' // corresponds to question file
+      }
+      // Add more ELA topics here
+    }
+  },
   // Add more subjects here
   // MATH: {
   //   id: 'math',
